@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hang Man</title>
-  <link rel="stylesheet" href="asstes/css/reset.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/game.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
@@ -20,20 +20,32 @@
         <h1>Star Wars Hangman</h1>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-md-12">
+        <h2>KYLO REN</h2>
+      </div>
+    </div>
     <div class="row cf">
       <div class="col-sm-6 cf">
-        <h2>Press Any Button to Begin</h2>
+        <img src="http://facetheforce.today/random/400?r=1" alt="..." class="img-rounded">
       </div>
 
       <div class="col-sm-6 cf">
-        <p>Guess A Letter</p>
+        <h3>Press Any Button to Begin</h3>
+        <div id="game">
+          <h3>Current Word</h3>
+          <p id="currentWord"></p>
 
+          <p class="word"></p>
+          <p id="win"></p>
+          <p>Letters Guessed</p>
+          <p>P A B C D</p>
+        </div>
       </div>
 
     </div>
   </div>
-
+  <script src="assets/js/game.js"></script>
 </body>
 
 </html>
