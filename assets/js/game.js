@@ -3,60 +3,46 @@
   var losses = 0;
 //number of guesses remaining  start with 15 -= 1
   var maxGuesses = 15;
-//"bobafett", "han solo", "luke", "rey", "leia", "millennium falcon", "skywalker", "jedi", "sith"
-//create array of words to be selected
-  var words =[
-    ["s","t","a","r", "w", "a", "r", "s"],
-    ["b","o","b","a", "f", "e", "t", "t"],
-    ["h","a","n","s", "o", "l", "o"],
-    ["f","a","l","c", "o", "n"],
-    ["l","u","k","e"],
-    ["s","k","y","w", "a", "l", "k", "e", "r"],
-];
+//
 
+  var words = ["bobafett", "hansolo", "luke", "rey", "leia", "skywalker", "jedi", "sith"];
+// create math.random to randomly select words
+  var selectWord = words[Math.floor(Math.random() * words.length)];
+//array to store guesses
+  var answerArray = [];
+//selected word from array
+  var lettersGuessed =[];
 
-
-
-
-  // create math.random to randomly select words
-    var selectWord = words[Math.floor(Math.random() * words.length)];
-    var newWord = new Array (selectWord.length);
-    console.log(newWord);
-    var lettersGuessed =[];
-
-
-    for (var i = 0; i < newWord.length; i++) {
-      newWord[i] = "_ ";
+//current word display as "_" inside html of browser
+    for (var i = 0; i < selectWord.length; i++) {
+      answerArray[i] = "_ ";
     }
-
+// put in a string
+var newWord = answerArray.join(" ");
 $("#currentWord").html(newWord);
 
-// press any key to begin event listener
+// press any key to guess letter for word
   document.onkeyup = function(event){
 
       var userGuess = event.key;
+      var letter = $('word').userGuess;
+      if (letter.length > 0){
+        for (var i = 0; i < selectWord.length; i++) {
+          if(selectWord[i] === letter){
+            answerArray[i] = letter;
+          }
+        }
+      }
+// if a letter is guessed and correct from the selectWord then replace "_" with letter
+//if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
       maxGuesses -= 1;
 
-
-
-      //current word display as "_" inside html of browser
-
-
-
-
-    //conditional statements for game logic
+//conditional statements for game logic
 
 
 
 
 }
-
-
-
-
-
-
-
 //create array of letters already guessed and not allow to replace in guesses
 
 
