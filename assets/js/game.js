@@ -1,16 +1,17 @@
+//***************************** SET UP ****************************************
 // display wins and losses
   var wins =0;
   var losses = 0;
 //number of guesses remaining  start with 15 -= 1
   var maxGuesses = 10;
-//array to store guesses
+//array to store correct guesses
     var answerArray = [];
-//selected word from array
+//selected word from array of wrong guessed letters
     var lettersGuessed = [];
-
-  var words = ["bobafett", "hansolo", "luke", "rey", "leia", "skywalker", "jedi", "sith"];
+//set up array of words to be used
+    var words = ["bobafett", "hansolo", "luke", "rey", "leia", "skywalker", "jedi", "sith"];
 // create math.random to randomly select words
-  var selectWord = words[Math.floor(Math.random() * words.length)];
+    var selectWord = words[Math.floor(Math.random() * words.length)];
 
 //***************************** FUNCTIONS ****************************************
 //current word display as "_" inside html of #currentWord
@@ -42,7 +43,9 @@ function checkWin (){
     losses ++;
     maxGuesses = 10;
     lettersGuessed = [];
-  }
+//else if statement for win if all letters are guessed correctly
+// else if (maxGuess > 0 && all words are filled in)
+}
 }
 
 //***************************** LOGIC ****************************************
@@ -65,7 +68,6 @@ function checkWin (){
             var alGuessed = lettersGuessed.join(", ");
             $('#lettersAlready').html(alGuessed);
             checkWin();
-
     }
   }
 }
