@@ -12,7 +12,7 @@
 // create math.random to randomly select words
   var selectWord = words[Math.floor(Math.random() * words.length)];
 
-
+//***************************** FUNCTIONS ****************************************
 //current word display as "_" inside html of #currentWord
   function randomWord(){
     for (var i = 0; i < selectWord.length; i++) {
@@ -22,7 +22,30 @@
   $("#currentWord").html(newWord);
 }
 }
-randomWord();
+
+//set up HTML
+function insertHtml() {
+  var html =
+  "<p>Wins: " + wins + "</p>" +
+  "<p>Losses: " + losses + "</p>" +
+  "<p>Max Guesses: " + maxGuesses + "</p>";
+  $("#win").html(html);
+
+}
+
+// if you guess all the correct words pop up "YOU WIN!" add to WIN SCORE
+function checkWin (){
+//if maxGuesses is 0 alert failed game
+  if (maxGuesses === 0) {
+    alert("YOU LOSE!");
+    randomWord();
+    losses ++;
+    maxGuesses = 10;
+    lettersGuessed = [];
+  }
+}
+
+//***************************** LOGIC ****************************************
 // press any key to guess letter for word
   document.onkeyup = function(event){
 
@@ -51,25 +74,4 @@ insertHtml();
 }
 
 insertHtml();
-
-//create array of letters already guessed and not allow to replace in guesses
-// if you guess all the correct words pop up "YOU WIN!" add to WIN SCORE
-function checkWin (){
-  if (maxGuesses === 0) {
-    alert("YOU LOSE!");
-    randomWord();
-    losses ++;
-    maxGuesses = 10;
-    lettersGuessed = [];
-  }
-}
-//if maxGuesses is 0 alert failed game
-
-function insertHtml() {
-  var html =
-  "<p>Wins: " + wins + "</p>" +
-  "<p>Losses: " + losses + "</p>" +
-  "<p>Max Guesses: " + maxGuesses + "</p>";
-  $("#win").html(html);
-
-}
+randomWord();
