@@ -14,15 +14,18 @@
 
 
 //current word display as "_" inside html of #currentWord
+  function randomWord(){
     for (var i = 0; i < selectWord.length; i++) {
       answerArray[i] = "_ ";
 // put in a string
     var newWord = answerArray.join(" ");
   $("#currentWord").html(newWord);
 }
-
+}
+randomWord();
 // press any key to guess letter for word
   document.onkeyup = function(event){
+
       var userGuess = event.key;
       console.log(userGuess);
 // on event.key letter press replace _ with actual letter
@@ -38,22 +41,26 @@
             lettersGuessed[i] = userGuess;
             var alGuessed = lettersGuessed.join(", ");
             $('#lettersAlready').html(alGuessed);
+            checkWin();
+
     }
   }
 }
-
-
 //if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
 insertHtml();
-checkWin();
 }
 
+insertHtml();
 
 //create array of letters already guessed and not allow to replace in guesses
 // if you guess all the correct words pop up "YOU WIN!" add to WIN SCORE
 function checkWin (){
   if (maxGuesses === 0) {
     alert("YOU LOSE!");
+    randomWord();
+    losses ++;
+    maxGuesses = 10;
+    lettersGuessed = [];
   }
 }
 //if maxGuesses is 0 alert failed game
