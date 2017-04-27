@@ -33,18 +33,16 @@
             // display selected word as "_" in the DOM
             $("#currentWord").html(answerArray);
             maxGuesses -=1;
-    }else if (selectWord != userGuess) {
-      lettersGuessed[i] = userGuess;
-      $('#lettersAlready').html(lettersGuessed);
+//if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
+      }else if (selectWord != userGuess) {
+            lettersGuessed[i] = userGuess;
+            var alGuessed = lettersGuessed.join(", ");
+            $('#lettersAlready').html(alGuessed);
     }
   }
 }
 
-//if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
-// if(userGuess != selectWord[i]){
-//       lettersGuessed[i] = userGuess;
-//       $('#letterAlready').html(lettersGuessed.join(', '))
-//     }
+
 //if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
 insertHtml();
 checkWin();
