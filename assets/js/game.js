@@ -1,8 +1,10 @@
-// window.onload = function(){
+window.onload = function(){
 //***************************** SET UP ****************************************
 // display wins and losses
     var wins =0;
     var losses = 0;
+    var correctCounter = 0;
+    console.log(correctCounter);
 //number of guesses remaining  start with 15 -= 1
     var maxGuesses = 10;
 //array to store correct guesses
@@ -27,6 +29,10 @@ function randomWord(){
 }
 }
 
+function selectNew() {
+  var selectWord = words[Math.floor(Math.random() * words.length)];
+  //console.log(selectWord);
+}
 
 //set up HTML
 function insertHtml() {
@@ -38,10 +44,11 @@ function insertHtml() {
 }
 
 // if you guess all the correct words pop up "YOU WIN!" add to WIN SCORE
-function checkWin (){
+function checkWin(){
 //if maxGuesses is 0 alert failed game
   if (maxGuesses === 0) {
     alert("YOU LOSE!");
+    selectNew();
     randomWord();
     losses ++;
     maxGuesses = 10;
@@ -50,7 +57,7 @@ function checkWin (){
 // else if (maxGuess > 0 && all words are filled in)
 }
 }
-
+randomWord();
 //***************************** LOGIC *************************************
 // press any key to guess letter for word
 $(document).on('keyup', function (event) {
@@ -64,20 +71,20 @@ if (userGuess.length > 0){
                 // display selected word as "_" in the DOM
                 $("#currentWord").html(answerArray);
                 maxGuesses -=1;
+                correctCounter ++;
+                checkWin();
     //if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
           }
           else if (selectWord[i] != userGuess) {
                 lettersGuessed.add(userGuess);
                 var allGuessed = Array(...lettersGuessed).join(", ");
                 $('#lettersAlready').html(allGuessed);
-
                 checkWin();
-        }
+
+          }
   }
 }
 //if letter is guessed and wrong add letter to lettersGuessed array subtract from maxGuesses
 insertHtml();
 })
-randomWord();
-// window.load bracket
-// }
+}
